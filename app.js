@@ -22,6 +22,22 @@ app.get('/', function(request, response){
    // response.send('Hello, World! GET');
 });
 
+app.get('/register', function(request, response){
+   console.log('Hey there Its GET Request ');
+   fs.readFile("register.html", function (error, pgResp) {
+           if (error) {
+               response.writeHead(404);
+               response.write('<h1>Contents you are looking are Not Found</h1>');
+           } else {
+               response.writeHead(200, { 'Content-Type': 'text/html' });
+               response.write(pgResp);
+           }
+
+           response.end();
+       });
+   // response.send('Hello, World! GET');
+});
+
 
  app.listen(port, function(){
      console.log('Express app listening on port ' + port);
